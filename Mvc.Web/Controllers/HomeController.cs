@@ -50,10 +50,12 @@ namespace Mvc.Web.Controllers
             };
             commentRepo.Add(newComment);
 
+            // refresh the photos with the new comment
+            List<Photo> allPhotosFromDb = photoRepo.GetAll();
 
-            // save comment to database
+            return PartialView("_ListPhotos", allPhotosFromDb);
 
-            return RedirectToAction("index");
+            //return RedirectToAction("index");
         }
     }
 }

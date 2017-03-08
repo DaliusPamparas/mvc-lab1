@@ -4,12 +4,16 @@
     ViewBag.Title = "Comment";
 }
 
+@section js{
+    <script src="~/scripts/ajax-createcomment.js"></script>
+}
+
 <h2>Comment</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Comment", "Home", FormMethod.Post, new { id = "commentform" }))
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Comment</h4>
         <hr />
@@ -37,9 +41,8 @@
         </div>
     </div>
 }
-
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-<script src="~/scripts/ajax-createcomment.js"></script>
+
