@@ -18,5 +18,14 @@ namespace Mvc.Data.Repositories
                 context.SaveChanges();
             }
         }
+        public void Delete(Comment comment)
+        {
+            using (MvcEntities context = new MvcEntities())
+            {
+                context.Comments.Remove(comment);
+
+                context.SaveChanges();
+            }
+        }
     }
 }
