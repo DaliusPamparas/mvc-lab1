@@ -1,23 +1,23 @@
 ﻿/// <reference path="jquery-3.1.1.min.js" />
 
-var commentform = $("#commentform");
+var photoform = $("#photoform");
 var form = $('form');
 
-$(document).on('submit', "#commentform", function (e) {
+$(document).on('submit', "#photoform", function (e) {
 
     e.preventDefault();
 
     $.ajax({
-        url: "/Home/Comment",
+        url: "/Home/Create/",
         method: "POST",
         data: new FormData(form[0]),
         success: function (partialResult) {
-            //$("#photosPanel").Html(partialResult);
 
+            alert("bilden har laddats up");
             window.location.href = "/Home/Index";
         },
         error: function (data) {
-            alert("somehting went wrong")
+            alert("fel")
         },
         processData: false,
         contentType: false,

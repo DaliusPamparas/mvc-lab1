@@ -70,7 +70,6 @@ namespace Mvc.Web.Controllers
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
         public ActionResult Create(Photo model, HttpPostedFileBase uploadfile)
         {
             // save the path of the image: eg. /images/myimage.jpg

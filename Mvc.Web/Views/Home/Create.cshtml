@@ -5,7 +5,7 @@
 }
 
 @section js{
-    
+    <script src="~/scripts/ajax-postphoto.js"></script>
 }
 
 
@@ -17,7 +17,7 @@
                             actionName: "Create",
                             controllerName: "Home",
                             method: FormMethod.Post,
-                            htmlAttributes: new { enctype = "multipart/form-data" }))
+                            htmlAttributes: new { enctype = "multipart/form-data", id="photoform" }))
 {
     @Html.AntiForgeryToken()
 

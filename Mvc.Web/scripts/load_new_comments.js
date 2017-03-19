@@ -1,15 +1,16 @@
 ﻿$(document).ready(function (e) {
 
-    setInterval(reload_New_Comments, 10000);
+    setInterval(reload_New_Comments, 5000);
 });
 
 var reload_New_Comments = function (e) {
     $.ajax({
         type: "GET",
-        url: "/Home",
+        url: "/Home/Index/",
         success: function (data) {
-           
+            console.log("laddat");
             $('#photosPanel').html(data);
+
         }
     });
 };
