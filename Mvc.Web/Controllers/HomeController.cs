@@ -57,5 +57,37 @@ namespace Mvc.Web.Controllers
 
             //return RedirectToAction("index");
         }
+
+        [HttpGet]
+        public ActionResult Create()
+        {
+            Photo photo = new Photo()
+            {
+
+            };
+
+            return View(photo);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Photo model, HttpPostedFileBase uploadfile)
+        {
+            // save the path of the image: eg. /images/myimage.jpg
+            model.Path = string.Format($"/images/{uploadfile.FileName}");
+
+            // save the photo name and path into the database
+            photoRepo.CreatePhoto(model);
+
+            //save the file in server folder
+            uploadfile.SaveAs(Server.MapPath($"~/images/{uploadfile.FileName}"));
+
+            // return to home index too see the image you have uploaded
+            return RedirectToAction("index", "home");
+        }
+
+
+
+
     }
 }
