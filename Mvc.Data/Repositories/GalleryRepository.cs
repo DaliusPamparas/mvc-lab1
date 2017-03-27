@@ -8,8 +8,17 @@ using System.Threading.Tasks;
 
 namespace Mvc.Data.Repositories
 {
+
     public class GalleryRepository
     {
+        public List<Gallery> GetAll()
+        {
+            using (MvcEntities _context = new MvcEntities())
+            {
+                List<Gallery> allGalleriesFromDB = _context.Galleries.ToList();
+                return allGalleriesFromDB;
+            }
+        }
         public void Add(Gallery gallery)
         {
             using (MvcEntities context = new MvcEntities())

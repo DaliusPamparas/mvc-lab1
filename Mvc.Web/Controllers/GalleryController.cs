@@ -1,10 +1,14 @@
-﻿using Mvc.Data.Models;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using Mvc.Data.Models;
 using Mvc.Data.Repositories;
-using System;
+
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Net;
 
 namespace Mvc.Web.Controllers
 {
@@ -15,35 +19,46 @@ namespace Mvc.Web.Controllers
         public GalleryController()
         {
             galleryRepo = new GalleryRepository();
-           
+
         }
-        // GET: Gallery
+
+      
         public ActionResult Index()
         {
-            return View();
+            List<Gallery> allGalleriesFromDB = galleryRepo.GetAll();
+            return View(allGalleriesFromDB);
         }
 
 
 
-
-        // GET: Gallery/Create
         [HttpGet]
         public ActionResult Create()
         {
-            return View();
+            Gallery gallery = new Gallery()
+            {
+
+            };
+
+            return View(gallery);
         }
 
-        // POST: Gallery/Create
+
         [HttpPost]
         public ActionResult Create(Gallery model)
         {
-            
+            Gallery newGallery = new Data.Models.Gallery()
+            {
+                Name = model.Name
+            };
+            galleryRepo.Add(newGallery);
 
-                return RedirectToAction("Create");
-     
-         }
-        
-      
-    
+
+
+            // return to home index too see the image you have uploaded
+            return RedirectToAction("index", "gallery");
+        }
+
+
+
     }
 }
