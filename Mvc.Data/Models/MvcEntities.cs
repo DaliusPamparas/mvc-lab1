@@ -11,6 +11,7 @@ namespace Mvc.Data.Models
     {
         public DbSet<Photo> Photos { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<Album> Albums { get; set; }
         public DbSet<Comment> Comments { get; set; }
 
     }
