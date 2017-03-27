@@ -10,6 +10,14 @@ namespace Mvc.Data.Repositories
 {
     public class AlbumRepository
     {
+        public List<Album> GetAll()
+        {
+            using (MvcEntities _context = new MvcEntities())
+            {
+                List<Album> allAlbumsFromDB = _context.Albums.ToList();
+                return allAlbumsFromDB;
+            }
+        }
         public void Add(Album album)
         {
             using (MvcEntities context = new MvcEntities())
